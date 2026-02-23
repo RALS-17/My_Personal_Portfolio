@@ -1,4 +1,5 @@
 import React from 'react';
+import profilePic from '../assets/profile.png';
 
 function Hero() {
   const scrollToProjects = () => {
@@ -17,7 +18,7 @@ function Hero() {
         <div className="hero-wrapper">
           <div className="hero-image-container">
             <img 
-              src="/assets/profile.png" 
+              src={profilePic}
               alt="Rey Aldrin Sutare Profile" 
               className="hero-profile-pic"
             />
