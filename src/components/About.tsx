@@ -4,6 +4,7 @@ function About() {
     'Python',
     'Flutter (Dart)',
     'JavaScript',
+    'TypeScript',
     'Node.js',
     'PostgreSQL',
     'Git',
