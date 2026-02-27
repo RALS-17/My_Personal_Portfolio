@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react';
-import { X, ZoomIn, ZoomOut, Maximize2, ExternalLink } from 'lucide-react';
+import { useState } from 'react';
+import { X, ZoomIn, ZoomOut } from 'lucide-react';
 import cert1 from '../assets/certificates/cert1.png';
 import cert2 from '../assets/certificates/cert2.png';
 import cert3 from '../assets/certificates/cert3.png';
@@ -27,8 +27,7 @@ interface Certificate {
 
 function Certificates() {
   const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null);
-  const [zoomPercent, setZoomPercent] = useState<number>(110);
-  const [fitMode, setFitMode] = useState<'percent' | 'fit-width' | 'fit-page'>('fit-width');
+  const [zoomPercent, setZoomPercent] = useState<number>(100);
   const [showAll, setShowAll] = useState<boolean>(false);
 
   const certificates: Certificate[] = [
@@ -97,12 +96,7 @@ function Certificates() {
     },
   ];
 
-  const viewerSrc = useMemo(() => {
-    if (!selectedCertificate) return undefined;
-    if (fitMode === 'fit-width') return `${selectedCertificate.pdfUrl}#view=FitH`;
-    if (fitMode === 'fit-page') return `${selectedCertificate.pdfUrl}#view=Fit`;
-    return `${selectedCertificate.pdfUrl}#zoom=${zoomPercent}`;
-  }, [selectedCertificate, fitMode, zoomPercent]);
+
 
   return (
     <section id="certificates" className="section">
@@ -134,7 +128,7 @@ function Certificates() {
                 <p className="certificate-date">{cert.date}</p>
                 <p className="certificate-description">{cert.description}</p>
                 <div className="certificate-card-actions">
-                  <span className="certificate-click-hint">Click card to view PDF</span>
+                  <span className="certificate-click-hint">Click card to view certificate</span>
                 </div>
               </div>
             </div>
@@ -163,63 +157,39 @@ function Certificates() {
               <div className="toolbar-left">
                 <button
                   className="toolbar-btn"
-                  onClick={() => {
-                    setFitMode('percent');
-                    setZoomPercent((z) => Math.max(50, z - 25));
-                  }}
+                  onClick={() => setZoomPercent((z) => Math.max(50, z - 25))}
                   title="Zoom out"
                 >
                   <ZoomOut size={18} />
                 </button>
-                <div className="toolbar-zoom-indicator">{fitMode === 'percent' ? `${zoomPercent}%` : fitMode === 'fit-width' ? 'Fit width' : 'Fit page'}</div>
+                <div className="toolbar-zoom-indicator">{zoomPercent}%</div>
                 <button
                   className="toolbar-btn"
-                  onClick={() => {
-                    setFitMode('percent');
-                    setZoomPercent((z) => Math.min(300, z + 25));
-                  }}
+                  onClick={() => setZoomPercent((z) => Math.min(300, z + 25))}
                   title="Zoom in"
                 >
                   <ZoomIn size={18} />
                 </button>
-                <button className="toolbar-btn" onClick={() => setFitMode('fit-width')} title="Fit width">
-                  Fit width
-                </button>
-                <button className="toolbar-btn" onClick={() => setFitMode('fit-page')} title="Fit page">
-                  Fit page
-                </button>
-              </div>
-              <div className="toolbar-right">
-                <a
-                  className="toolbar-link"
-                  href={selectedCertificate.pdfUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="Open in new tab"
-                >
-                  <ExternalLink size={16} />
-                  <span>Open</span>
-                </a>
-                <button className="toolbar-btn" onClick={() => NB_fullscreenToggle()} title="Toggle fullscreen">
-                  <Maximize2 size={18} />
-                </button>
               </div>
             </div>
-            <div className="certificate-pdf-container">
-              <iframe
-                src={viewerSrc}
-                title={selectedCertificate.title}
-                className="certificate-pdf-viewer"
+            <div className="certificate-image-viewer-container">
+              <img
+                src={selectedCertificate.image}
+                alt={selectedCertificate.title}
+                className="certificate-image-viewer"
+                style={{ transform: `scale(${zoomPercent / 100})`, transformOrigin: 'center', transition: 'transform 0.2s' }}
               />
             </div>
-            <a
-              href={selectedCertificate.pdfUrl}
-              download
-              className="certificate-download-btn"
-              onClick={(e) => e.stopPropagation()}
-            >
-              Download PDF
-            </a>
+            <div className="certificate-modal-actions">
+              <a
+                href={selectedCertificate.pdfUrl}
+                download
+                className="certificate-download-btn"
+                onClick={(e) => e.stopPropagation()}
+              >
+                Download PDF
+              </a>
+            </div>
           </div>
         </div>
       )}
@@ -228,10 +198,3 @@ function Certificates() {
 }
 
 export default Certificates;
-
-// local helper to toggle fullscreen class
-function NB_fullscreenToggle(): void {
-  const modal = document.querySelector('.certificate-modal-content');
-  if (!modal) return;
-  modal.classList.toggle('fullscreen');
-}
