@@ -155,6 +155,24 @@ body {
   }
 }
 
+@keyframes floatAround {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  25% {
+    transform: translate(100px, -80px);
+  }
+  50% {
+    transform: translate(50px, 100px);
+  }
+  75% {
+    transform: translate(-100px, 50px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
 .hero-floating-circle {
   position: absolute;
   left: 10%;
@@ -163,7 +181,7 @@ body {
   height: 400px;
   background: radial-gradient(circle, rgba(88, 166, 255, 0.12) 0%, transparent 100%);
   border-radius: 50%;
-  animation: float 30s ease-in-out infinite;
+  animation: floatAround 25s ease-in-out infinite;
   z-index: 0;
 }
 
