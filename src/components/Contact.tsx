@@ -34,7 +34,7 @@ function Contact() {
             </div>
           </a>
           <a
-            href="https://github.com/Adiiiii17"
+            href="https://github.com/RALS-17"
             className="contact-link"
             target="_blank"
             rel="noopener noreferrer"

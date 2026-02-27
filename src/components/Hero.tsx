@@ -71,6 +71,10 @@ function Hero() {
                 {phase === 'second' || phase === 'done' ? lastLine.slice(0, lastIndex) : ''}
               </span>
             </h1>
+            <div className="hero-tags">
+              <span className="hero-tag">Data Analyst</span>
+              <span className="hero-tag">Web Developer</span>
+            </div>
           </div>
           <button onClick={scrollToProjects} className="hero-button">
             View Projects
