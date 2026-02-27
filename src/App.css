@@ -160,13 +160,13 @@ body {
     transform: translate(0px, 0px);
   }
   25% {
-    transform: translate(100px, -80px);
+    transform: translate(300px, -200px);
   }
   50% {
-    transform: translate(50px, 100px);
+    transform: translate(-200px, 300px);
   }
   75% {
-    transform: translate(-100px, 50px);
+    transform: translate(400px, -100px);
   }
   100% {
     transform: translate(0px, 0px);
