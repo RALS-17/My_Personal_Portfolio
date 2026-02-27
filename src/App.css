@@ -155,6 +155,18 @@ body {
   }
 }
 
+.hero-floating-circle {
+  position: absolute;
+  left: 10%;
+  top: 20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(88, 166, 255, 0.12) 0%, transparent 100%);
+  border-radius: 50%;
+  animation: float 30s ease-in-out infinite;
+  z-index: 0;
+}
+
 .hero-content {
   text-align: center;
   max-width: 1200px;

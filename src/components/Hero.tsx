@@ -54,6 +54,7 @@ function Hero() {
 
   return (
     <section className="hero">
+      <div className="hero-floating-circle"></div>
       <div className="hero-content">
         <div className="hero-wrapper">
           <div className="hero-image-container">
