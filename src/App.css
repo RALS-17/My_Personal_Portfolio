@@ -299,7 +299,7 @@ body {
   display: flex;
   gap: 1rem;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
   flex-wrap: wrap;
 }
 
