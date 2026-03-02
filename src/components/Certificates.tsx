@@ -50,7 +50,7 @@ function Certificates() {
       image: cert1,
       description: 'Foundational knowledge of computer hardware components including CPUs, RAM, storage devices, motherboards, and peripherals, as well as basic troubleshooting and system assembly skills.',
       pdfUrl: cert1Pdf,
-      sortDate: '2026-02-01',
+      sortDate: '2026-02-28',
     },
     {
       id: 2,
