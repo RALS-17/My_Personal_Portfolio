@@ -11,6 +11,7 @@ import cert8 from '../assets/certificates/cert8.jpg';
 import cert9 from '../assets/certificates/cert9.jpg';
 import cert10 from '../assets/certificates/cert10.jpg';
 import cert11 from '../assets/certificates/cert11.jpg';
+import cert12 from '../assets/certificates/cert12.png';
 import cert1Pdf from '../assets/certificates/cert1.pdf';
 import cert2Pdf from '../assets/certificates/cert2.pdf';
 import cert3Pdf from '../assets/certificates/cert3.pdf';
@@ -22,6 +23,7 @@ import cert8Pdf from '../assets/certificates/cert8.pdf';
 import cert9Pdf from '../assets/certificates/cert9.pdf';
 import cert10Pdf from '../assets/certificates/cert10.pdf';
 import cert11Pdf from '../assets/certificates/cert11.pdf';
+import cert12Pdf from '../assets/certificates/cert12.pdf';
 
 interface Certificate {
   id: number;
@@ -149,8 +151,16 @@ function Certificates() {
       description: 'Certificate of participation for the Robotics Training/Workshop themed "Stimulating Learners’ Interest in Science and Technology through Continued Excellence in the Field of Robotics," held at Paharang Integrated School Social Hall.',
       pdfUrl: cert11Pdf,
       sortDate: '2022-07-22',
-    },
-  ];
+    },    {
+      id: 12,
+      title: 'Introduction to Data Science',
+      issuer: 'Issued by: Cisco Networking Academy',
+      date: 'Completed: March 2, 2026',
+      image: cert12,
+      description: 'Successfully completed the Introduction to Data Science course offered by Networking Academy through the Cisco Networking Academy program.',
+      pdfUrl: cert12Pdf,
+      sortDate: '2026-03-02',
+    },  ];
 
   const orderedCertificates = [...certificates].sort((a, b) => 
     new Date(b.sortDate).getTime() - new Date(a.sortDate).getTime()
