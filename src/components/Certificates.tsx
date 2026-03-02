@@ -60,7 +60,7 @@ function Certificates() {
       image: cert2,
       description: 'Introduction to data analytics concepts including data collection, cleaning, visualization, and interpretation using analytical tools to support data-driven decision-making.',
       pdfUrl: cert2Pdf,
-      sortDate: '2026-02-15',
+      sortDate: '2026-03-15',
     },
     {
       id: 3,
@@ -70,7 +70,7 @@ function Certificates() {
       image: cert3,
       description: 'Practical application of artificial intelligence tools to enhance resume writing, optimize professional profiles, and tailor applications for improved career opportunities.',
       pdfUrl: cert3Pdf,
-      sortDate: '2026-02-25',
+      sortDate: '2026-01-25',
     },
     {
       id: 4,
@@ -159,7 +159,7 @@ function Certificates() {
       image: cert12,
       description: 'Successfully completed the Introduction to Data Science course offered by Networking Academy through the Cisco Networking Academy program.',
       pdfUrl: cert12Pdf,
-      sortDate: '2026-03-02',
+      sortDate: '2026-04-02',
     },  ];
 
   const orderedCertificates = [...certificates].sort((a, b) => 
