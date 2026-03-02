@@ -7,6 +7,10 @@ import cert4 from '../assets/certificates/cert4.png';
 import cert5 from '../assets/certificates/cert5.png';
 import cert6 from '../assets/certificates/cert6.png';
 import cert7 from '../assets/certificates/cert7.png';
+import cert8 from '../assets/certificates/cert8.jpg';
+import cert9 from '../assets/certificates/cert9.jpg';
+import cert10 from '../assets/certificates/cert10.jpg';
+import cert11 from '../assets/certificates/cert11.jpg';
 import cert1Pdf from '../assets/certificates/cert1.pdf';
 import cert2Pdf from '../assets/certificates/cert2.pdf';
 import cert3Pdf from '../assets/certificates/cert3.pdf';
@@ -14,6 +18,10 @@ import cert4Pdf from '../assets/certificates/cert4.pdf';
 import cert5Pdf from '../assets/certificates/cert5.pdf';
 import cert6Pdf from '../assets/certificates/cert6.pdf';
 import cert7Pdf from '../assets/certificates/cert7.pdf';
+import cert8Pdf from '../assets/certificates/cert8.pdf';
+import cert9Pdf from '../assets/certificates/cert9.pdf';
+import cert10Pdf from '../assets/certificates/cert10.pdf';
+import cert11Pdf from '../assets/certificates/cert11.pdf';
 
 interface Certificate {
   id: number;
@@ -23,6 +31,7 @@ interface Certificate {
   image: string;
   description: string;
   pdfUrl: string;
+  sortDate: string;
 }
 
 function Certificates() {
@@ -39,6 +48,7 @@ function Certificates() {
       image: cert1,
       description: 'Foundational knowledge of computer hardware components including CPUs, RAM, storage devices, motherboards, and peripherals, as well as basic troubleshooting and system assembly skills.',
       pdfUrl: cert1Pdf,
+      sortDate: '2026-02-01',
     },
     {
       id: 2,
@@ -48,6 +58,7 @@ function Certificates() {
       image: cert2,
       description: 'Introduction to data analytics concepts including data collection, cleaning, visualization, and interpretation using analytical tools to support data-driven decision-making.',
       pdfUrl: cert2Pdf,
+      sortDate: '2026-02-15',
     },
     {
       id: 3,
@@ -57,6 +68,7 @@ function Certificates() {
       image: cert3,
       description: 'Practical application of artificial intelligence tools to enhance resume writing, optimize professional profiles, and tailor applications for improved career opportunities.',
       pdfUrl: cert3Pdf,
+      sortDate: '2026-02-20',
     },
     {
       id: 4,
@@ -66,6 +78,7 @@ function Certificates() {
       image: cert4,
       description: 'Comprehensive introduction to networking fundamentals including network protocols, IP addressing, routing and switching concepts, network security basics, and configuration of Cisco networking devices.',
       pdfUrl: cert4Pdf,
+      sortDate: '2024-01-15',
     },
     {
       id: 5,
@@ -75,6 +88,7 @@ function Certificates() {
       image: cert5,
       description: 'Official recognition as a bona fide member of the Junior Philippine Computer Society (JPCS) – BatStateU TNEU Alangilan Chapter, a recognized student chapter under the Philippine Computer Society, entitled to the rights, benefits, and privileges of national membership.',
       pdfUrl: cert5Pdf,
+      sortDate: '2025-12-31',
     },
     {
       id: 6,
@@ -84,6 +98,7 @@ function Certificates() {
       image: cert6,
       description: 'Participation in a university seminar focused on blockchain fundamentals and real-world applications, covering core concepts, emerging technologies, and practical use cases to strengthen knowledge in digital innovation and decentralized systems.',
       pdfUrl: cert6Pdf,
+      sortDate: '2025-11-01',
     },
     {
       id: 7,
@@ -93,8 +108,55 @@ function Certificates() {
       image: cert7,
       description: 'Active participation in a virtual seminar exploring the impact of artificial intelligence on skills development, research, and career pathways, with emphasis on navigating the future through research-driven and practical AI applications.',
       pdfUrl: cert7Pdf,
+      sortDate: '2025-10-01',
+    },
+    {
+      id: 8,
+      title: 'National Robotics Competition 2020 – Mission Harvest Category',
+      issuer: 'Issued by: Batangas City Government',
+      date: 'Completed: February 2020',
+      image: cert8,
+      description: 'Recognized as the STAR Award Winner in the Mission Harvest Category during the National Robotics Competition 2020 (Luzon), held at Francisco G. Nepomuceno Memorial High School and presented by the Batangas City Government.',
+      pdfUrl: cert8Pdf,
+      sortDate: '2020-02-17',
+    },
+    {
+      id: 9,
+      title: 'Batangas Information Technology Conference 2024',
+      issuer: 'Issued by: Batangas Information Technology Society',
+      date: 'Completed: April 6, 2024',
+      image: cert9,
+      description: 'Active participation in the Batangas Information Technology Conference 2024 themed "Navigating the Future of Technology: Integration, Innovation, and Security," held at Lipa Academy for Sports, Culture and Arts.',
+      pdfUrl: cert9Pdf,
+      sortDate: '2024-04-06',
+    },
+    {
+      id: 10,
+      title: 'Robotics Training/Workshop Resource Speaker Recognition',
+      issuer: 'Issued by: Department of Education – Batangas City Division',
+      date: 'Completed: July 22, 2022',
+      image: cert10,
+      description: 'Acknowledgement for serving as a resource speaker during the Robotics Training/Workshop at Paharang Integrated School, highlighting dedication to inspiring learners in science and technology through robotics excellence.',
+      pdfUrl: cert10Pdf,
+      sortDate: '2022-07-22',
+    },
+    {
+      id: 11,
+      title: 'Robotics Training/Workshop Participation Certificate',
+      issuer: 'Issued by: Department of Education – Batangas City Division',
+      date: 'Completed: July 22, 2022',
+      image: cert11,
+      description: 'Certificate of participation for the Robotics Training/Workshop themed "Stimulating Learners’ Interest in Science and Technology through Continued Excellence in the Field of Robotics," held at Paharang Integrated School Social Hall.',
+      pdfUrl: cert11Pdf,
+      sortDate: '2022-07-22',
     },
   ];
+
+  const orderedCertificates = [...certificates].sort((a, b) => 
+    new Date(b.sortDate).getTime() - new Date(a.sortDate).getTime()
+  );
+
+  const visibleCertificates = showAll ? orderedCertificates : orderedCertificates.slice(0, 3);
 
 
 
@@ -103,7 +165,7 @@ function Certificates() {
       <div className="container">
         <h2 className="section-title">Certificates</h2>
         <div className="certificates-grid">
-          {(showAll ? certificates : certificates.slice(0, 3)).map((cert) => (
+          {visibleCertificates.map((cert) => (
             <div
               key={cert.id}
               className="certificate-card"
@@ -134,7 +196,7 @@ function Certificates() {
             </div>
           ))}
         </div>
-        {certificates.length > 3 && (
+        {orderedCertificates.length > 3 && (
           <div className="certificates-actions">
             <button className="show-more-btn" onClick={() => setShowAll((v) => !v)}>
               {showAll ? 'Show less' : 'Show all certificates'}
