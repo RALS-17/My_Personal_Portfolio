@@ -4,6 +4,7 @@ import About from './components/About';
 import Projects from './components/Projects';
 import Certificates from './components/Certificates';
 import Contact from './components/Contact';
+import BackToTop from './components/BackToTop';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -17,6 +18,7 @@ function App() {
       <Certificates />
       <Contact />
       <Footer />
+      <BackToTop />
     </div>
   );
 }

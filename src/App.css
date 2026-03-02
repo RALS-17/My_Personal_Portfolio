@@ -14,14 +14,81 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 2rem;
   flex-wrap: wrap;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
 }
 
 .footer-rights {
   color: #8b949e;
   font-size: 0.95rem;
   font-weight: 500;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, rgba(88, 166, 255, 0.1) 0%, rgba(121, 192, 255, 0.05) 100%);
+  border: 1px solid rgba(88, 166, 255, 0.3);
+  border-radius: 50%;
+  color: #58a6ff;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  text-decoration: none;
+}
+
+.social-link:hover {
+  background: linear-gradient(135deg, rgba(88, 166, 255, 0.25) 0%, rgba(121, 192, 255, 0.15) 100%);
+  border-color: rgba(88, 166, 255, 0.6);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(88, 166, 255, 0.15);
+}
+
+.social-link:hover svg {
+  animation: bounce 0.6s ease;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.social-tooltip {
+  position: absolute;
+  bottom: -30px;
+  background: rgba(30, 40, 60, 0.95);
+  color: #c9d1d9;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  border: 1px solid rgba(88, 166, 255, 0.3);
+}
+
+.social-link:hover .social-tooltip {
+  opacity: 1;
 }
 
 .footer-languages {
@@ -840,6 +907,7 @@ body {
   background-color: rgba(22, 27, 34, 0.8);
   border: 1px solid #30363d;
   border-radius: 12px;
+  padding: 2rem;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.33, 1, 0.68, 1);
   display: flex;
@@ -847,6 +915,7 @@ body {
   height: 100%;
   min-height: 520px;
   cursor: pointer;
+  position: relative;
 }
 
 .certificate-card::before {
@@ -875,10 +944,11 @@ body {
 
 .certificate-image-wrapper {
   width: 100%;
-  height: 240px;
-  aspect-ratio: 16 / 9;
+  height: 200px;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(88, 166, 255, 0.1), rgba(121, 192, 255, 0.1));
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(88, 166, 255, 0.08), rgba(121, 192, 255, 0.06));
+  margin-bottom: 1.25rem;
 }
 
 .certificate-image {
@@ -894,7 +964,7 @@ body {
 }
 
 .certificate-content {
-  padding: 1.8rem;
+  padding: 0;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -1140,6 +1210,35 @@ body {
   text-align: center;
   align-self: center;
   width: fit-content;
+}
+
+.certificate-image-viewer-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  padding: 1.5rem;
+  min-height: 0;
+  background: #1a1e24;
+}
+
+.certificate-image-viewer {
+  max-width: 100%;
+  max-height: 60vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  display: block;
+  margin: 0 auto;
+}
+
+.certificate-modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .certificate-download-btn:hover {
@@ -1544,7 +1643,120 @@ body {
   }
 }
 
-/* Update existing media query for mobile */
+/* Enhanced card animations */
+.project-card {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(88, 166, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+  z-index: 1;
+}
+
+.project-card:hover::before {
+  left: 100%;
+}
+
+.project-card:hover {
+  transform: translateY(-12px);
+  border-color: rgba(88, 166, 255, 0.8);
+  box-shadow: 0 20px 40px rgba(88, 166, 255, 0.2);
+}
+
+.certificate-card {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.certificate-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(88, 166, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+  z-index: 1;
+}
+
+.certificate-card:hover::before {
+  left: 100%;
+}
+
+.certificate-card:hover {
+  transform: translateY(-12px);
+  border-color: rgba(88, 166, 255, 0.8);
+  box-shadow: 0 20px 40px rgba(88, 166, 255, 0.2);
+}
+
+/* Enhanced section title animation */
+.section-title {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #58a6ff, #79c0ff);
+  animation: expandWidth 0.8s ease 0.2s forwards;
+}
+
+@keyframes expandWidth {
+  to {
+    width: 100%;
+  }
+}
+
+/* Smooth scroll behavior for buttons */
+.hero-button,
+.show-more-btn,
+.certificate-download-btn {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-button::before,
+.show-more-btn::before,
+.certificate-download-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  z-index: 0;
+}
+
+.hero-button:hover::before,
+.show-more-btn:hover::before,
+.certificate-download-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* More update: Update existing media query for mobile */
 @media (max-width: 768px) {
   .hamburger-button {
     display: block;
