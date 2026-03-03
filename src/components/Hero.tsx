@@ -55,6 +55,19 @@ function Hero() {
   return (
     <section className="hero">
       <div className="hero-floating-circle"></div>
+
+      {/* Subtle floating code snippets */}
+      <span className="hero-code-float">&lt;div class="portfolio"&gt;</span>
+      <span className="hero-code-float">const data = await fetch();</span>
+      <span className="hero-code-float">if (success) return true;</span>
+      <span className="hero-code-float">import &#123; deploy &#125; from 'cloud';</span>
+      <span className="hero-code-float">SELECT * FROM skills;</span>
+      <span className="hero-code-float">git commit -m "init"</span>
+
+      {/* Corner bracket accents */}
+      <span className="hero-bracket hero-bracket--tl">&lt;/&gt;</span>
+      <span className="hero-bracket hero-bracket--br">&#123; &#125;</span>
+
       <div className="hero-content">
         <div className="hero-wrapper">
           <div className="hero-image-container">

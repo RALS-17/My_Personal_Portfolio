@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ExternalLink, X } from 'lucide-react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import gcareImg from '../assets/projects/gcare.png';
 import ilijanImg from '../assets/projects/ilijan.png';
 import oloOloImg from '../assets/projects/olo-olo.png';
@@ -15,6 +16,36 @@ interface Project {
 
 function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>({ threshold: 0.05 });
+  const { ref: titleRef, isVisible: titleVisible } = useScrollReveal({ threshold: 0.3 });
+  const [visibleCards, setVisibleCards] = useState<boolean[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const idx = parseInt(entry.target.getAttribute('data-index') || '0');
+          if (entry.isIntersecting) {
+            setVisibleCards((prev) => {
+              const next = [...prev];
+              next[idx] = true;
+              return next;
+            });
+          } else {
+            setVisibleCards((prev) => {
+              const next = [...prev];
+              next[idx] = false;
+              return next;
+            });
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    const els = document.querySelectorAll('.project-card');
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   const projects = [
     {
@@ -47,14 +78,15 @@ function Projects() {
   ];
 
   return (
-    <section id="projects" className="section">
+    <section id="projects" className="section" ref={sectionRef}>
       <div className="container">
-        <h2 className="section-title">Projects</h2>
+        <h2 ref={titleRef} className={`section-title scroll-reveal ${titleVisible ? 'revealed' : ''}`}>Projects</h2>
         <div className="projects-grid">
-          {projects.map((project) => (
+          {projects.map((project, idx) => (
             <div 
               key={project.id} 
-              className="project-card"
+              className={`project-card scroll-reveal-card ${visibleCards[idx] ? 'revealed' : ''}`}
+              data-index={idx}
               onClick={() => setSelectedProject(project)}
               style={{ cursor: 'pointer' }}
             >

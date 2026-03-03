@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import '../styles/Skills.css';
 
 interface SkillCategory {
@@ -8,6 +9,10 @@ interface SkillCategory {
 
 function About() {
   const [visibleSkills, setVisibleSkills] = useState<boolean[]>([]);
+  const { ref: sectionRef } = useScrollReveal<HTMLElement>({ threshold: 0.08 });
+  const { ref: titleRef, isVisible: titleVisible } = useScrollReveal({ threshold: 0.3 });
+  const { ref: textRef, isVisible: textVisible } = useScrollReveal({ threshold: 0.2 });
+  const { ref: skillsTitleRef, isVisible: skillsTitleVisible } = useScrollReveal({ threshold: 0.3 });
 
   const skillsData: SkillCategory[] = [
     {
@@ -33,11 +38,17 @@ function About() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          const index = parseInt(entry.target.getAttribute('data-index') || '0');
           if (entry.isIntersecting) {
-            const index = parseInt(entry.target.getAttribute('data-index') || '0');
             setVisibleSkills((prev) => {
               const newVisible = [...prev];
               newVisible[index] = true;
+              return newVisible;
+            });
+          } else {
+            setVisibleSkills((prev) => {
+              const newVisible = [...prev];
+              newVisible[index] = false;
               return newVisible;
             });
           }
@@ -46,17 +57,17 @@ function About() {
       { threshold: 0.1 }
     );
 
-    const elements = document.querySelectorAll('.skill-category');
+    const elements = document.querySelectorAll('.skill-row');
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section id="about" className="section">
+    <section id="about" className="section" ref={sectionRef}>
       <div className="container">
-        <h2 className="section-title">About Me</h2>
-        <p className="about-text">
+        <h2 ref={titleRef} className={`section-title scroll-reveal ${titleVisible ? 'revealed' : ''}`}>About Me</h2>
+        <p ref={textRef} className={`about-text scroll-reveal scroll-reveal-up ${textVisible ? 'revealed' : ''}`}>
           Web Developer with hands-on experience developing responsive applications using Flutter (Dart),
           React, JavaScript, Python, SQL, and Firebase. Knowledgeable in full-stack development principles,
           cloud-based databases, and efficient data handling workflows. Experienced in data cleaning,
@@ -65,15 +76,15 @@ function About() {
           environment.
         </p>
 
-        <h3 className="skills-title" style={{ marginTop: '3rem' }}>💻 Technical Skills</h3>
+        <h3 ref={skillsTitleRef} className={`skills-title scroll-reveal scroll-reveal-up ${skillsTitleVisible ? 'revealed' : ''}`} style={{ marginTop: '3rem' }}>💻 Technical Skills</h3>
         <div className="skills-grid">
           {skillsData.map((categoryData, index) => (
             <div
               key={index}
-              className={`skill-category ${visibleSkills[index] ? 'visible' : ''}`}
+              className={`skill-row ${visibleSkills[index] ? 'visible' : ''}`}
               data-index={index}
             >
-              <h3 className="skill-category-title">{categoryData.category}</h3>
+              <h3 className="skill-row-title">{categoryData.category}</h3>
               <div className="skills-list">
                 {categoryData.skills.map((skill, skillIndex) => (
                   <span

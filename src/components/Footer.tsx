@@ -1,6 +1,8 @@
 import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 function Footer() {
+  const { ref: footerRef, isVisible: footerVisible } = useScrollReveal({ threshold: 0.2 });
   const languages = ['TypeScript', 'React', 'HTML', 'CSS'];
   
   const socialLinks = [
@@ -25,7 +27,7 @@ function Footer() {
   ];
 
   return (
-    <footer className="footer">
+    <footer ref={footerRef} className={`footer scroll-reveal scroll-reveal-up ${footerVisible ? 'revealed' : ''}`}>
       <div className="container footer-content">
         <div className="footer-left">
           <div className="footer-rights">© 2026 Rey Aldrin Sutare • All rights reserved</div>

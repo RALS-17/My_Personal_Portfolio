@@ -1,14 +1,19 @@
 import { Mail, Linkedin, Github } from 'lucide-react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 function Contact() {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollReveal({ threshold: 0.3 });
+  const { ref: textRef, isVisible: textVisible } = useScrollReveal({ threshold: 0.2 });
+  const { ref: linksRef, isVisible: linksVisible } = useScrollReveal({ threshold: 0.15 });
+
   return (
     <section id="contact" className="section">
       <div className="container">
-        <h2 className="section-title">📧 Get In Touch</h2>
-        <p className="contact-text">
+        <h2 ref={titleRef} className={`section-title scroll-reveal ${titleVisible ? 'revealed' : ''}`}>📧 Get In Touch</h2>
+        <p ref={textRef} className={`contact-text scroll-reveal scroll-reveal-up ${textVisible ? 'revealed' : ''}`}>
           Feel free to reach out to me through any of the following channels. I'm always open to discussing new projects, creative ideas, or opportunities.
         </p>
-        <div className="contact-links">
+        <div ref={linksRef} className={`contact-links scroll-reveal scroll-reveal-up ${linksVisible ? 'revealed' : ''}`}>
           <a
             href="mailto:reyaldrin17@gmail.com"
             className="contact-link"

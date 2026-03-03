@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { X, ZoomIn, ZoomOut } from 'lucide-react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import cert1 from '../assets/certificates/cert1.png';
 import cert2 from '../assets/certificates/cert2.png';
 import cert3 from '../assets/certificates/cert3.png';
@@ -40,6 +41,35 @@ function Certificates() {
   const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null);
   const [zoomPercent, setZoomPercent] = useState<number>(100);
   const [showAll, setShowAll] = useState<boolean>(false);
+  const { ref: titleRef, isVisible: titleVisible } = useScrollReveal({ threshold: 0.3 });
+  const [visibleCards, setVisibleCards] = useState<boolean[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const idx = parseInt(entry.target.getAttribute('data-index') || '0');
+          if (entry.isIntersecting) {
+            setVisibleCards((prev) => {
+              const next = [...prev];
+              next[idx] = true;
+              return next;
+            });
+          } else {
+            setVisibleCards((prev) => {
+              const next = [...prev];
+              next[idx] = false;
+              return next;
+            });
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    const els = document.querySelectorAll('.certificate-card');
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [showAll]);
 
   const certificates: Certificate[] = [
     {
@@ -173,12 +203,13 @@ function Certificates() {
   return (
     <section id="certificates" className="section">
       <div className="container">
-        <h2 className="section-title">Certificates</h2>
+        <h2 ref={titleRef} className={`section-title scroll-reveal ${titleVisible ? 'revealed' : ''}`}>Certificates</h2>
         <div className="certificates-grid">
-          {visibleCertificates.map((cert) => (
+          {visibleCertificates.map((cert, idx) => (
             <div
               key={cert.id}
-              className="certificate-card"
+              className={`certificate-card scroll-reveal-card ${visibleCards[idx] ? 'revealed' : ''}`}
+              data-index={idx}
               onClick={() => setSelectedCertificate(cert)}
               style={{ cursor: 'pointer' }}
             >
