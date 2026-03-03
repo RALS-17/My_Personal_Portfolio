@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ExternalLink, X } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import gcareImg from '../assets/projects/gcare.png';
-import ilijanImg from '../assets/projects/ilijan.png';
-import oloOloImg from '../assets/projects/olo-olo.png';
 
 interface Project {
   id: number;
@@ -11,7 +8,6 @@ interface Project {
   description: string;
   techStack: string[];
   githubUrl: string;
-  imageUrl?: string;
 }
 
 function Projects() {
@@ -55,7 +51,6 @@ function Projects() {
         'A web application that connects patients and healthcare providers, enabling appointment scheduling, real-time communication, and feedback management.A Flutter web application for appointment scheduling and patient feedback, powered by Firebase and Hugging Face NLP sentiment analysis.',
       techStack: ['Flutter', 'Dart', 'Python', 'JavaScript','Firebase','Hugging Face', 'AppScript'],
       githubUrl: 'https://global-care-mc.web.app/',
-      imageUrl: gcareImg,
     },
     {
       id: 2,
@@ -64,7 +59,6 @@ function Projects() {
         'A web application with real-time weather updates and visitor foot traffic tracking, featuring Firebase for database management and authentication, optimized for seamless performance across devices.',
       techStack: ['JavaScript','Python', 'HTML', 'CSS', 'Firebase','OpenWeather API','emailJS'],
       githubUrl: 'https://olo-olo-mangrove-forest.web.app/',
-      imageUrl: oloOloImg,
     },
     {
       id: 3,
@@ -73,7 +67,6 @@ function Projects() {
         'A web application showcasing Ilijan Falls, featuring interactive visitor guides, eco-trail information, and community-driven conservation efforts, designed to promote smart and sustainable eco-tourism.',
       techStack: ['JavaScript', 'Python','emailJS', 'HTML', 'CSS','Netlify'],
       githubUrl: 'https://ilijan-falls.netlify.app/',
-      imageUrl: ilijanImg,
     },
   ];
 
@@ -90,26 +83,16 @@ function Projects() {
               onClick={() => setSelectedProject(project)}
               style={{ cursor: 'pointer' }}
             >
-              {project.imageUrl && (
-                <a
-                  className="project-image-wrapper"
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  aria-label={`Open ${project.title}`}
-                >
-                  <img
-                    className="project-image"
-                    src={project.imageUrl}
-                    alt={project.title}
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src =
-                        'https://via.placeholder.com/1200x630.png?text=' + encodeURIComponent(project.title);
-                    }}
-                  />
-                </a>
-              )}
+              <div className="project-iframe-wrapper">
+                <iframe
+                  src={project.githubUrl}
+                  title={project.title}
+                  className="project-iframe"
+                  loading="lazy"
+                  sandbox="allow-scripts allow-same-origin"
+                />
+                <div className="project-iframe-overlay" />
+              </div>
               <h3 className="project-title">{project.title}</h3>
               <div className="project-tech">
                 {project.techStack.map((tech) => (
@@ -144,25 +127,15 @@ function Projects() {
               <X size={24} />
             </button>
             <h2 className="modal-title">{selectedProject.title}</h2>
-            {selectedProject.imageUrl && (
-              <a
-                className="project-modal-image-wrapper"
-                href={selectedProject.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Open ${selectedProject.title}`}
-              >
-                <img
-                  className="project-modal-image"
-                  src={selectedProject.imageUrl}
-                  alt={selectedProject.title}
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src =
-                      'https://via.placeholder.com/1600x900.png?text=' + encodeURIComponent(selectedProject.title);
-                  }}
-                />
-              </a>
-            )}
+            <div className="project-modal-iframe-wrapper">
+              <iframe
+                src={selectedProject.githubUrl}
+                title={selectedProject.title}
+                className="project-modal-iframe"
+                loading="lazy"
+                sandbox="allow-scripts allow-same-origin"
+              />
+            </div>
             <p className="modal-description">{selectedProject.description}</p>
             <div className="modal-tech">
               {selectedProject.techStack.map((tech: string) => (
