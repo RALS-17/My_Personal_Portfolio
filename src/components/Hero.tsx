@@ -52,6 +52,25 @@ function Hero() {
     return () => window.clearTimeout(t);
   }, [phase]);
 
+  // Clear hash when Hero section is visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+          if (window.location.hash) {
+            window.history.replaceState(null, '', window.location.pathname);
+          }
+        }
+      },
+      { threshold: [0.5] }
+    );
+
+    const heroEl = document.querySelector('.hero');
+    if (heroEl) observer.observe(heroEl);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="hero">
       <div className="hero-floating-circle"></div>

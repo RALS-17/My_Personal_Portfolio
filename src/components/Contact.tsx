@@ -1,10 +1,13 @@
 import { Mail, Linkedin, Github } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useHashScroll } from '../hooks/useHashScroll';
 
 function Contact() {
   const { ref: titleRef, isVisible: titleVisible } = useScrollReveal({ threshold: 0.3 });
   const { ref: textRef, isVisible: textVisible } = useScrollReveal({ threshold: 0.2 });
   const { ref: linksRef, isVisible: linksVisible } = useScrollReveal({ threshold: 0.15 });
+  
+  useHashScroll('contact');
 
   return (
     <section id="contact" className="section">
@@ -27,7 +30,7 @@ function Contact() {
             </div>
           </a>
           <a
-            href="https://www.linkedin.com/in/rey-aldrin-sutare-5165713b1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+            href="https://linkedin.com/in/rey-aldrin-sutare"
             className="contact-link"
             target="_blank"
             rel="noopener noreferrer"

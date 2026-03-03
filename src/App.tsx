@@ -6,9 +6,12 @@ import Certificates from './components/Certificates';
 import Contact from './components/Contact';
 import BackToTop from './components/BackToTop';
 import Footer from './components/Footer';
+import { useHashNavigation } from './hooks/useHashScroll';
 import './App.css';
 
 function App() {
+  useHashNavigation();
+  
   return (
     <div>
       <Navbar />

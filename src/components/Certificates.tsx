@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { X, ZoomIn, ZoomOut } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useHashScroll } from '../hooks/useHashScroll';
 import cert1 from '../assets/certificates/cert1.png';
 import cert2 from '../assets/certificates/cert2.png';
 import cert3 from '../assets/certificates/cert3.png';
@@ -43,6 +44,8 @@ function Certificates() {
   const [showAll, setShowAll] = useState<boolean>(false);
   const { ref: titleRef, isVisible: titleVisible } = useScrollReveal({ threshold: 0.3 });
   const [visibleCards, setVisibleCards] = useState<boolean[]>([]);
+  
+  useHashScroll('certificates');
 
   useEffect(() => {
     const observer = new IntersectionObserver(

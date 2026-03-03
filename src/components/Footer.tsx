@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 function Footer() {

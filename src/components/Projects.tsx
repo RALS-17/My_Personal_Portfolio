@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ExternalLink, X } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useHashScroll } from '../hooks/useHashScroll';
 
 interface Project {
   id: number;
@@ -15,6 +16,8 @@ function Projects() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>({ threshold: 0.05 });
   const { ref: titleRef, isVisible: titleVisible } = useScrollReveal({ threshold: 0.3 });
   const [visibleCards, setVisibleCards] = useState<boolean[]>([]);
+  
+  useHashScroll('projects');
 
   useEffect(() => {
     const observer = new IntersectionObserver(

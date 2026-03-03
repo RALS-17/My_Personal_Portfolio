@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useHashScroll } from '../hooks/useHashScroll';
 import '../styles/Skills.css';
 
 interface SkillCategory {
@@ -13,6 +14,8 @@ function About() {
   const { ref: titleRef, isVisible: titleVisible } = useScrollReveal({ threshold: 0.3 });
   const { ref: textRef, isVisible: textVisible } = useScrollReveal({ threshold: 0.2 });
   const { ref: skillsTitleRef, isVisible: skillsTitleVisible } = useScrollReveal({ threshold: 0.3 });
+  
+  useHashScroll('about');
 
   const skillsData: SkillCategory[] = [
     {
