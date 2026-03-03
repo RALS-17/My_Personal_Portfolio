@@ -133,13 +133,36 @@ body {
 
 .nav-logo {
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 800;
   color: #58a6ff;
   background: linear-gradient(135deg, #58a6ff, #79c0ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  letter-spacing: 0.5px;
+  letter-spacing: 2px;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  position: relative;
+  cursor: default;
+  transition: all 0.3s ease;
+}
+
+.nav-logo:hover {
+  filter: brightness(1.2);
+  text-shadow: 0 0 20px rgba(88, 166, 255, 0.4);
+}
+
+.logo-bracket {
+  font-weight: 400;
+  opacity: 0.5;
+  font-size: 1.1em;
+  transition: opacity 0.3s ease;
+}
+
+.nav-logo:hover .logo-bracket {
+  opacity: 1;
 }
 
 .nav-links {
@@ -1672,12 +1695,16 @@ body {
 
 .sidebar-logo {
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 800;
   color: #58a6ff;
   background: linear-gradient(135deg, #58a6ff, #79c0ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  letter-spacing: 2px;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  align-items: center;
 }
 
 .sidebar-close {

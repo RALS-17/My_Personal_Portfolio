@@ -40,7 +40,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <div className="nav-logo">RALS</div>
+        <div className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ cursor: 'pointer' }}><span className="logo-bracket">&lt;</span>RALS<span className="logo-bracket">/&gt;</span></div>
         
         {/* Desktop Navigation */}
         <div className={`nav-links ${isMobile ? 'desktop-hidden' : ''}`}>
@@ -73,7 +73,7 @@ function Navbar() {
         <div className={`sidebar-overlay ${isOpen ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
           <div className={`sidebar-menu ${isOpen ? 'open' : ''}`} onClick={(e) => e.stopPropagation()}>
             <div className="sidebar-header">
-              <div className="sidebar-logo">RALS</div>
+              <div className="sidebar-logo" onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setIsOpen(false); }} style={{ cursor: 'pointer' }}><span className="logo-bracket">&lt;</span>RALS<span className="logo-bracket">/&gt;</span></div>
               <button className="sidebar-close" onClick={() => setIsOpen(false)}>
                 <X size={24} />
               </button>
