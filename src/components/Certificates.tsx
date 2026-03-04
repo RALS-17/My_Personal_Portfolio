@@ -14,18 +14,20 @@ import cert9 from '../assets/certificates/cert9.jpg';
 import cert10 from '../assets/certificates/cert10.jpg';
 import cert11 from '../assets/certificates/cert11.jpg';
 import cert12 from '../assets/certificates/cert12.png';
-import cert1Pdf from '../assets/certificates/cert1.pdf';
-import cert2Pdf from '../assets/certificates/cert2.pdf';
-import cert3Pdf from '../assets/certificates/cert3.pdf';
-import cert4Pdf from '../assets/certificates/cert4.pdf';
-import cert5Pdf from '../assets/certificates/cert5.pdf';
-import cert6Pdf from '../assets/certificates/cert6.pdf';
-import cert7Pdf from '../assets/certificates/cert7.pdf';
-import cert8Pdf from '../assets/certificates/cert8.pdf';
-import cert9Pdf from '../assets/certificates/cert9.pdf';
-import cert10Pdf from '../assets/certificates/cert10.pdf';
-import cert11Pdf from '../assets/certificates/cert11.pdf';
-import cert12Pdf from '../assets/certificates/cert12.pdf';
+import cert13 from '../assets/certificates/cert13.png';
+import cert1Pdf from '../assets/certificates/computer-hardware-basics.pdf';
+import cert2Pdf from '../assets/certificates/data-analytics-essentials.pdf';
+import cert3Pdf from '../assets/certificates/apply-ai-update-resume.pdf';
+import cert4Pdf from '../assets/certificates/ccna-introduction-to-networks.pdf';
+import cert5Pdf from '../assets/certificates/jcps-membership.pdf';
+import cert6Pdf from '../assets/certificates/blockchain-fundamentals-applications.pdf';
+import cert7Pdf from '../assets/certificates/ai-research-practice.pdf';
+import cert8Pdf from '../assets/certificates/national-robotics-competition-2020.pdf';
+import cert9Pdf from '../assets/certificates/bitcon-2024.pdf';
+import cert10Pdf from '../assets/certificates/robotics-resource-speaker-2022.pdf';
+import cert11Pdf from '../assets/certificates/robotics-training-participation-2022.pdf';
+import cert12Pdf from '../assets/certificates/introduction-to-data-science.pdf';
+import cert13Pdf from '../assets/certificates/exploring-iot-cisco-packet-tracer.pdf';
 
 interface Certificate {
   id: number;
@@ -184,7 +186,8 @@ function Certificates() {
       description: 'Certificate of participation for the Robotics Training/Workshop themed "Stimulating Learners’ Interest in Science and Technology through Continued Excellence in the Field of Robotics," held at Paharang Integrated School Social Hall.',
       pdfUrl: cert11Pdf,
       sortDate: '2022-07-22',
-    },    {
+    },
+    {
       id: 12,
       title: 'Introduction to Data Science',
       issuer: 'Issued by: Cisco Networking Academy',
@@ -193,7 +196,18 @@ function Certificates() {
       description: 'Successfully completed the Introduction to Data Science course offered by Networking Academy through the Cisco Networking Academy program.',
       pdfUrl: cert12Pdf,
       sortDate: '2026-04-02',
-    },  ];
+    },
+    {
+      id: 13,
+      title: 'Exploring Internet of Things with Cisco Packet Tracer',
+      issuer: 'Issued by: DICT-ITU DTC Initiative',
+      date: 'Completed: March, 2026',
+      image: cert13,
+      description: 'Successfully completed the Exploring Internet of Things with Cisco Packet Tracer course offered by DICT-ITU DTC Initiative through the Cisco Networking Academy program.',
+      pdfUrl: cert13Pdf,
+      sortDate: '2026-03-04',
+    },
+  ];
 
   const orderedCertificates = [...certificates].sort((a, b) => 
     new Date(b.sortDate).getTime() - new Date(a.sortDate).getTime()
