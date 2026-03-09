@@ -15,6 +15,8 @@ import cert10 from '../assets/certificates/cert10.jpg';
 import cert11 from '../assets/certificates/cert11.jpg';
 import cert12 from '../assets/certificates/cert12.png';
 import cert13 from '../assets/certificates/cert13.png';
+import cert14 from '../assets/certificates/cert14.png';
+import cert15 from '../assets/certificates/CERT15.jpg';
 import cert1Pdf from '../assets/certificates/computer-hardware-basics.pdf';
 import cert2Pdf from '../assets/certificates/data-analytics-essentials.pdf';
 import cert3Pdf from '../assets/certificates/apply-ai-update-resume.pdf';
@@ -28,6 +30,8 @@ import cert10Pdf from '../assets/certificates/robotics-resource-speaker-2022.pdf
 import cert11Pdf from '../assets/certificates/robotics-training-participation-2022.pdf';
 import cert12Pdf from '../assets/certificates/introduction-to-data-science.pdf';
 import cert13Pdf from '../assets/certificates/exploring-iot-cisco-packet-tracer.pdf';
+import cert14Pdf from '../assets/certificates/Python_Essentials_1_certificate_reyaldrin17-gmail-com_b9475d73-34a4-4b10-84fd-3f99a70dfde2.pdf';
+import cert15Pdf from '../assets/certificates/NC-2 COMPUTER SYSTEM SERVICING.pdf';
 
 interface Certificate {
   id: number;
@@ -148,16 +152,6 @@ function Certificates() {
       sortDate: '2025-10-01',
     },
     {
-      id: 8,
-      title: 'National Robotics Competition 2020 – Mission Harvest Category',
-      issuer: 'Issued by: Batangas City Government',
-      date: 'Completed: February 2020',
-      image: cert8,
-      description: 'Recognized as the STAR Award Winner in the Mission Harvest Category during the National Robotics Competition 2020 (Luzon), held at Francisco G. Nepomuceno Memorial High School and presented by the Batangas City Government.',
-      pdfUrl: cert8Pdf,
-      sortDate: '2020-02-17',
-    },
-    {
       id: 9,
       title: 'Batangas Information Technology Conference (BITCON) 2024',
       issuer: 'Issued by: Batangas Information Technology Society',
@@ -166,26 +160,6 @@ function Certificates() {
       description: 'Active participation in the Batangas Information Technology Conference 2024 themed "Navigating the Future of Technology: Integration, Innovation, and Security," held at Lipa Academy for Sports, Culture and Arts.',
       pdfUrl: cert9Pdf,
       sortDate: '2024-04-06',
-    },
-    {
-      id: 10,
-      title: 'Robotics Training/Workshop Resource Speaker Recognition',
-      issuer: 'Issued by: Department of Education – Batangas City Division',
-      date: 'Completed: July, 2022',
-      image: cert10,
-      description: 'Acknowledgement for serving as a resource speaker during the Robotics Training/Workshop at Paharang Integrated School, highlighting dedication to inspiring learners in science and technology through robotics excellence.',
-      pdfUrl: cert10Pdf,
-      sortDate: '2022-07-22',
-    },
-    {
-      id: 11,
-      title: 'Robotics Training/Workshop Participation Certificate',
-      issuer: 'Issued by: Department of Education – Batangas City Division',
-      date: 'Completed: July, 2022',
-      image: cert11,
-      description: 'Certificate of participation for the Robotics Training/Workshop themed "Stimulating Learners’ Interest in Science and Technology through Continued Excellence in the Field of Robotics," held at Paharang Integrated School Social Hall.',
-      pdfUrl: cert11Pdf,
-      sortDate: '2022-07-22',
     },
     {
       id: 12,
@@ -206,6 +180,26 @@ function Certificates() {
       description: 'Successfully completed the Exploring Internet of Things with Cisco Packet Tracer course offered by DICT-ITU DTC Initiative through the Cisco Networking Academy program.',
       pdfUrl: cert13Pdf,
       sortDate: '2026-03-04',
+    },
+    {
+      id: 14,
+      title: 'Python Essentials 1',
+      issuer: 'Issued by: Cisco Networking Academy',
+      date: 'Completed: 2024',
+      image: cert14,
+      description: 'Successfully completed Python Essentials 1 course through Cisco Networking Academy, covering fundamental Python programming concepts including syntax, data types, control structures, functions, and basic problem-solving techniques.',
+      pdfUrl: cert14Pdf,
+      sortDate: '2024-12-31',
+    },
+    {
+      id: 15,
+      title: 'NC II Computer System Servicing',
+      issuer: 'Issued by: TESDA',
+      date: 'Completed: 2023',
+      image: cert15,
+      description: 'National Certification Level II in Computer System Servicing issued by the Technical Education and Skills Development Authority (TESDA), demonstrating competency in installing, configuring, and maintaining computer systems and networks.',
+      pdfUrl: cert15Pdf,
+      sortDate: '2023-12-31',
     },
   ];
 
