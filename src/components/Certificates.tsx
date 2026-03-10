@@ -9,14 +9,13 @@ import cert4 from '../assets/certificates/cert4.png';
 import cert5 from '../assets/certificates/cert5.png';
 import cert6 from '../assets/certificates/cert6.png';
 import cert7 from '../assets/certificates/cert7.png';
-import cert8 from '../assets/certificates/cert8.jpg';
 import cert9 from '../assets/certificates/cert9.jpg';
-import cert10 from '../assets/certificates/cert10.jpg';
-import cert11 from '../assets/certificates/cert11.jpg';
 import cert12 from '../assets/certificates/cert12.png';
 import cert13 from '../assets/certificates/cert13.png';
 import cert14 from '../assets/certificates/cert14.png';
 import cert15 from '../assets/certificates/CERT15.jpg';
+import cert16 from '../assets/certificates/cert16.png';
+import cert17 from '../assets/certificates/cert17.png';
 import cert1Pdf from '../assets/certificates/computer-hardware-basics.pdf';
 import cert2Pdf from '../assets/certificates/data-analytics-essentials.pdf';
 import cert3Pdf from '../assets/certificates/apply-ai-update-resume.pdf';
@@ -24,14 +23,13 @@ import cert4Pdf from '../assets/certificates/ccna-introduction-to-networks.pdf';
 import cert5Pdf from '../assets/certificates/jcps-membership.pdf';
 import cert6Pdf from '../assets/certificates/blockchain-fundamentals-applications.pdf';
 import cert7Pdf from '../assets/certificates/ai-research-practice.pdf';
-import cert8Pdf from '../assets/certificates/national-robotics-competition-2020.pdf';
 import cert9Pdf from '../assets/certificates/bitcon-2024.pdf';
-import cert10Pdf from '../assets/certificates/robotics-resource-speaker-2022.pdf';
-import cert11Pdf from '../assets/certificates/robotics-training-participation-2022.pdf';
 import cert12Pdf from '../assets/certificates/introduction-to-data-science.pdf';
 import cert13Pdf from '../assets/certificates/exploring-iot-cisco-packet-tracer.pdf';
 import cert14Pdf from '../assets/certificates/Python_Essentials_1_certificate_reyaldrin17-gmail-com_b9475d73-34a4-4b10-84fd-3f99a70dfde2.pdf';
 import cert15Pdf from '../assets/certificates/NC-2 COMPUTER SYSTEM SERVICING.pdf';
+import cert16Pdf from '../assets/certificates/eGOVPH - Certificate.pdf';
+import cert17Pdf from '../assets/certificates/Operating_Systems_Basics_certificate_reyaldrin17-gmail-com_6f0fd2b5-bc9b-4a55-adae-f583004b4b1c.pdf';
 
 interface Certificate {
   id: number;
@@ -200,6 +198,26 @@ function Certificates() {
       description: 'National Certification Level II in Computer System Servicing issued by the Technical Education and Skills Development Authority (TESDA), demonstrating competency in installing, configuring, and maintaining computer systems and networks.',
       pdfUrl: cert15Pdf,
       sortDate: '2023-12-31',
+    },
+    {
+      id: 16,
+      title: 'eGovPH App',
+      issuer: 'Issued by: DICT Calabarzon',
+      date: 'Completed: March 2026',
+      image: cert16,
+      description: 'Successfully completed training on the eGovPH App, covering digital government services, online transaction systems, and the use of government mobile applications for efficient public service delivery.',
+      pdfUrl: cert16Pdf,
+      sortDate: '2026-03-10',
+    },
+    {
+      id: 17,
+      title: 'Operating Systems Basics',
+      issuer: 'Issued by: Cisco Networking Academy',
+      date: 'Completed: March 2026',
+      image: cert17,
+      description: 'Successfully completed the Operating Systems Basics course through Cisco Networking Academy, covering fundamental concepts of operating systems including process management, memory management, file systems, and system administration.',
+      pdfUrl: cert17Pdf,
+      sortDate: '2026-03-08',
     },
   ];
 
