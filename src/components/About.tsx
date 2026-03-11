@@ -28,7 +28,7 @@ function About() {
     },
     {
       category: 'Data & Analytics',
-      skills: ['Data Analysis', 'Google Colab', 'Power BI', 'Visualization','Excel'],
+      skills: ['Google Colab', 'Power BI', 'Visualization','Excel'],
     },
     {
       category: 'Tools & Platforms',

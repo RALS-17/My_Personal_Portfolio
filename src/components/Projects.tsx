@@ -71,9 +71,17 @@ function Projects() {
       techStack: ['JavaScript', 'Python','emailJS', 'HTML', 'CSS','Netlify'],
       githubUrl: 'https://ilijan-falls.netlify.app/',
     },
+    {
+      id: 4,
+      title: 'SkillSwap: Community Skill Trading Platform',
+      description:
+        'A full-stack community platform that lets people trade skills without exchanging money. Think time-banking: "I\'ll teach you React — you teach me Spanish." Users post what they can teach and what they want to learn, then browse for compatible swap partners, send requests, coordinate sessions, and leave reviews.',
+      techStack: ['React', 'Vite', 'Firebase'],
+      githubUrl: 'https://skillswap-tau-five.vercel.app/',
+    },
   ];
 
-  return (
+  return (  
     <section id="projects" className="section" ref={sectionRef}>
       <div className="container">
         <h2 ref={titleRef} className={`section-title scroll-reveal ${titleVisible ? 'revealed' : ''}`}>Projects</h2>

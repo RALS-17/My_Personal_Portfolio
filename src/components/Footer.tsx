@@ -3,7 +3,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 
 function Footer() {
   const { ref: footerRef, isVisible: footerVisible } = useScrollReveal({ threshold: 0.2 });
-  const languages = ['TypeScript', 'React', 'HTML', 'CSS'];
+  const languages = ['TypeScript', 'React', 'HTML', 'CSS', 'EmailJS'];
   
   const socialLinks = [
     {
@@ -20,7 +20,7 @@ function Footer() {
     },
     {
       name: 'Email',
-      url: 'mailto:your-email@example.com',
+      url: 'mailto:reyaldrin17@gmail.com',
       icon: Mail,
       label: 'Send me an email'
     },
