@@ -105,8 +105,9 @@ function Hero() {
               </span>
             </h1>
             <div className="hero-tags-container">
-              <span className="hero-tag-item">Data Analyst</span>
               <span className="hero-tag-item">Web Developer</span>
+              <span className="hero-tag-item">|</span>
+              <span className="hero-tag-item">Data Analyst</span>
             </div>
           </div>
           <button onClick={scrollToContact} className="hero-button">
