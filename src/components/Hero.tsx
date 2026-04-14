@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import profilePic from '../assets/profile.png';
 
 function Hero() {
-  const scrollToProjects = () => {
-    const element = document.getElementById('projects');
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -109,8 +109,8 @@ function Hero() {
               <span className="hero-tag-item">Web Developer</span>
             </div>
           </div>
-          <button onClick={scrollToProjects} className="hero-button">
-            View Projects
+          <button onClick={scrollToContact} className="hero-button">
+            Contact Me
           </button>
         </div>
       </div>

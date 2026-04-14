@@ -13,6 +13,7 @@ interface Project {
 
 function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [showAll, setShowAll] = useState<boolean>(false);
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>({ threshold: 0.05 });
   const { ref: titleRef, isVisible: titleVisible } = useScrollReveal({ threshold: 0.3 });
   const [visibleCards, setVisibleCards] = useState<boolean[]>([]);
@@ -44,11 +45,19 @@ function Projects() {
     const els = document.querySelectorAll('.project-card');
     els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [showAll]);
 
   const projects = [
     {
       id: 1,
+      title: 'SkillSwap: Community Skill Trading Platform',
+      description:
+        'A full-stack community platform that lets people trade skills without exchanging money. Think time-banking: "I\'ll teach you React — you teach me Spanish." Users post what they can teach and what they want to learn, then browse for compatible swap partners, send requests, coordinate sessions, and leave reviews.',
+      techStack: ['React', 'Vite', 'Firebase'],
+      githubUrl: 'https://skillswap-tau-five.vercel.app/',
+    },
+    {
+      id: 2,
       title: 'Gcare: Connect Appointment and Feedback Platform',
       description:
         'A web application that connects patients and healthcare providers, enabling appointment scheduling, real-time communication, and feedback management.A Flutter web application for appointment scheduling and patient feedback, powered by Firebase and Hugging Face NLP sentiment analysis.',
@@ -56,7 +65,7 @@ function Projects() {
       githubUrl: 'https://global-care-mc.web.app/',
     },
     {
-      id: 2,
+      id: 3,
       title: 'Olo-Olo mangrove forest Booking Website',
       description:
         'A web application with real-time weather updates and visitor foot traffic tracking, featuring Firebase for database management and authentication, optimized for seamless performance across devices.',
@@ -64,29 +73,23 @@ function Projects() {
       githubUrl: 'https://olo-olo-mangrove-forest.web.app/',
     },
     {
-      id: 3,
+      id: 4,
       title: 'Ilijan Falls Eco-Tourism Web Application',
       description:
         'A web application showcasing Ilijan Falls, featuring interactive visitor guides, eco-trail information, and community-driven conservation efforts, designed to promote smart and sustainable eco-tourism.',
       techStack: ['JavaScript', 'Python','emailJS', 'HTML', 'CSS','Netlify'],
       githubUrl: 'https://ilijan-falls.netlify.app/',
     },
-    {
-      id: 4,
-      title: 'SkillSwap: Community Skill Trading Platform',
-      description:
-        'A full-stack community platform that lets people trade skills without exchanging money. Think time-banking: "I\'ll teach you React — you teach me Spanish." Users post what they can teach and what they want to learn, then browse for compatible swap partners, send requests, coordinate sessions, and leave reviews.',
-      techStack: ['React', 'Vite', 'Firebase'],
-      githubUrl: 'https://skillswap-tau-five.vercel.app/',
-    },
   ];
+
+  const visibleProjects = showAll ? projects : projects.slice(0, 3);
 
   return (  
     <section id="projects" className="section" ref={sectionRef}>
       <div className="container">
         <h2 ref={titleRef} className={`section-title scroll-reveal ${titleVisible ? 'revealed' : ''}`}>Projects</h2>
         <div className="projects-grid">
-          {projects.map((project, idx) => (
+          {visibleProjects.map((project, idx) => (
             <div 
               key={project.id} 
               className={`project-card scroll-reveal-card ${visibleCards[idx] ? 'revealed' : ''}`}
@@ -126,6 +129,16 @@ function Projects() {
             </div>
           ))}
         </div>
+        {projects.length > 3 && (
+          <div className="certificates-actions">
+            <button 
+              className="show-more-btn"
+              onClick={() => setShowAll(!showAll)}
+            >
+              {showAll ? 'Show Less' : 'Show More'}
+            </button>
+          </div>
+        )}
       </div>
 
       {selectedProject && (
