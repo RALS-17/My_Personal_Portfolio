@@ -44,7 +44,7 @@ function Hero() {
   // Loop after a pause when animation completes
   useEffect(() => {
     if (phase !== 'done') return;
-    const t = window.setTimeout(() => {
+    const t = window.setTimeout(() => { 
       setFirstIndex(0);
       setLastIndex(0);
       setPhase('first');
